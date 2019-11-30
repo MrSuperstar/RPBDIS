@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MvcApplication.Models.User>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Список пользователей</h2>
+    <table class="table">
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h2 class="bg-danger mb-1 p-2 text-white">Access Denied</h2>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">OK</a>
+}

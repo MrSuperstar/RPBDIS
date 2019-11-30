@@ -1,0 +1,19 @@
+﻿@model string
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+{
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label for="name">Новая роль</label>
+            <input name="name" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+}
+else
+{
+    <h2 class="bg-danger mb-1 p-2 text-white">Access Denied</h2>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">OK</a>
+}

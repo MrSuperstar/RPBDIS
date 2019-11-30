@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcApplication.Models.Call>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lantern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Master)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lantern.LanternName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Master.MasterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.SectionNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CallId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CallId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CallId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

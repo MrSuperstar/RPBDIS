@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container">
+        <div class="row">
+            <h3 class="display-3">
+                This&nbsp;is&nbsp;the ASP.NET&nbsp;MVC&nbsp;Project.
+            </h3>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <a asp-action="Index" asp-controller="Roles" class="btn btn-primary">View roles</a>
+        </div>
+        <div class="row">
+            <a asp-action="Index" asp-controller="Users" class="btn btn-primary">View users</a>
+        </div>
+    </div>
+}
+else
+{
+    <h2 class="bg-info mb-1 p-2 text-white">You are not authorized</h2>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">OK</a>
+}

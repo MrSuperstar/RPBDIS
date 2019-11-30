@@ -1,0 +1,48 @@
+﻿@model MvcApplication.Models.Lamp
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+{
+    <h1>Create</h1>
+
+    <h4>Lamp</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="LampName" class="control-label"></label>
+                    <input asp-for="LampName" class="form-control" />
+                    <span asp-validation-for="LampName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LampPower" class="control-label"></label>
+                    <input asp-for="LampPower" class="form-control" />
+                    <span asp-validation-for="LampPower" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LampLife" class="control-label"></label>
+                    <input asp-for="LampLife" class="form-control" />
+                    <span asp-validation-for="LampLife" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+else
+{
+    <h2 class="bg-danger mb-1 p-2 text-white">Access Denied</h2>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">OK</a>
+}
