@@ -45,7 +45,7 @@ namespace MvcApplication.Data
             for (int i = 0; i < mastersNumber; i++)
             {
                 StringBuilder name = new StringBuilder();
-                name.Append(getRandomString(masterNames, random)).Append(" ").Append(getRandomString(masterSurnames, random));
+                name.Append(GetRandomString(masterNames, random)).Append(" ").Append(GetRandomString(masterSurnames, random));
 
                 db.Masters.Add(new Master { MasterName = name.ToString() });
             }
@@ -55,7 +55,7 @@ namespace MvcApplication.Data
             for (int i = 0; i < lampsNumber; i++)
             {
                 StringBuilder name = new StringBuilder();
-                name.Append(getRandomString(lampNames, random));
+                name.Append(GetRandomString(lampNames, random)).Append(" №").Append(i + 1);
 
                 db.Lamps.Add(new Lamp { LampName = name.ToString(), LampPower = random.Next(5, 40), LampLife = random.Next(1000, 20000) });
             }
@@ -66,8 +66,8 @@ namespace MvcApplication.Data
             {
                 StringBuilder name = new StringBuilder();
                 StringBuilder type = new StringBuilder();
-                name.Append(getRandomString(lanternNames, random));
-                type.Append(getRandomString(lanternTypes, random));
+                name.Append(GetRandomString(lanternNames, random)).Append(" №").Append(i + 1);
+                type.Append(GetRandomString(lanternTypes, random));
 
                 bool isOperable = random.Next(0, 2) == 0 ? false : true;
 
@@ -77,7 +77,7 @@ namespace MvcApplication.Data
             db.SaveChanges();
         }
 
-        private static string getRandomString(string[] array, Random random)
+        private static string GetRandomString(string[] array, Random random)
         {
             return array[random.Next(0, array.Length)];
         }

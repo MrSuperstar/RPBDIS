@@ -29,21 +29,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th><a asp-action="Index"
+                           asp-route-name="@(Model.FilterViewModel.SelectedName)"
+                           asp-route-sortOrder="@(Model.SortViewModel.IdSort)">Id</a></th>
                     <th>
                         <a asp-action="Index"
                            asp-route-name="@(Model.FilterViewModel.SelectedName)"
-                           asp-route-sortOrder="@(Model.SortViewModel.NameSort)">Lamp name</a>
+                           asp-route-sortOrder="@(Model.SortViewModel.NameSort)">Name</a>
                     </th>
                     <th>
                         <a asp-action="Index"
                            asp-route-name="@(Model.FilterViewModel.SelectedName)"
-                           asp-route-sortOrder="@(Model.SortViewModel.PowerSort)">Lamp power</a>
+                           asp-route-sortOrder="@(Model.SortViewModel.PowerSort)">Power</a>
                     </th>
                     <th>
                         <a asp-action="Index"
                            asp-route-name="@(Model.FilterViewModel.SelectedName)"
-                           asp-route-sortOrder="@(Model.SortViewModel.LifeSort)">Lamp life</a>
+                           asp-route-sortOrder="@(Model.SortViewModel.LifeSort)">Service life</a>
                     </th>
                 </tr>
             </thead>

@@ -26,18 +26,18 @@ namespace MvcApplication.Controllers
         // GET: Lamps
         [ResponseCache(Duration = 20)]
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> Index(string name, int page = 1, SortState sortOrder = SortState.NameAsc)
+        public async Task<IActionResult> Index(string name, int page = 1, SortState sortOrder = SortState.IdAsc)
         {
             int pageSize = 10;
 
-            var lamps = _context.Lamps.ToList();
+            var lamps = await _context.Lamps.ToListAsync();
             if (!String.IsNullOrEmpty(name))
             {
                 lamps = lamps.Where(p => p.LampName.Contains(name)).ToList();
             }
 
             var count = lamps.Count();
-            IEnumerable<Lamp> items = lamps.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            IEnumerable<Lamp> items = lamps.ToList();
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
 
             // сортировка
@@ -61,11 +61,18 @@ namespace MvcApplication.Controllers
                 case SortState.PowerAsc:
                     items = items.OrderBy(s => s.LampPower).ToList();
                     break;
+                case SortState.IdAsc:
+                    items = items.OrderBy(s => s.LampId).ToList();
+                    break;
+                case SortState.IdDesc:
+                    items = items.OrderByDescending(s => s.LampId).ToList();
+                    break;
                 default:
                     items = items.OrderBy(s => s.LampName).ToList();
                     break;
             }
-            
+
+            items = items.Skip((page - 1) * pageSize).Take(pageSize);
 
             IndexViewModel viewModel = new IndexViewModel
             {

@@ -26,7 +26,7 @@ namespace MvcApplication.Controllers
         {
             int pageSize = 10;
 
-            var masters = _context.Masters.ToList();
+            var masters = await _context.Masters.ToListAsync();
             var count = masters.Count();
             var items = masters.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);

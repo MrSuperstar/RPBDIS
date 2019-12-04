@@ -19,11 +19,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Lantern name</th>
-                <th>Lantern type</th>
-                <th>Lamp life</th>
-                <th></th>
+                <th>@Html.DisplayNameFor(model => model.Lanterns.FirstOrDefault().LanternId)</th>
+                <th>@Html.DisplayNameFor(model => model.Lanterns.FirstOrDefault().LanternName)</th>
+                <th>@Html.DisplayNameFor(model => model.Lanterns.FirstOrDefault().LanternType)</th>
+                <th>@Html.DisplayNameFor(model => model.Lanterns.FirstOrDefault().IsOperable)</th>
+                <th>@Html.DisplayNameFor(model => model.Lanterns.FirstOrDefault().LampId)</th>
             </tr>
         </thead>
         <tbody>

@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Development\\C#\\РПБДИС\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj": {}
+    "G:\\Development\\C#\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj": {}
   },
   "projects": {
-    "E:\\Development\\C#\\РПБДИС\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj": {
+    "G:\\Development\\C#\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Development\\C#\\РПБДИС\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj",
+        "projectUniqueName": "G:\\Development\\C#\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj",
         "projectName": "MvcApplication",
-        "projectPath": "E:\\Development\\C#\\РПБДИС\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj",
-        "packagesPath": "C:\\Users\\Nikol\\.nuget\\packages\\",
-        "outputPath": "E:\\Development\\C#\\РПБДИС\\ASP\\MvcApplication\\MvcApplication\\obj\\",
+        "projectPath": "G:\\Development\\C#\\ASP\\MvcApplication\\MvcApplication\\MvcApplication.csproj",
+        "packagesPath": "C:\\Users\\snork\\.nuget\\packages\\",
+        "outputPath": "G:\\Development\\C#\\ASP\\MvcApplication\\MvcApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\snork\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

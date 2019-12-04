@@ -26,21 +26,21 @@ namespace MvcApplication.Controllers
         {
             int pageSize = 10;
 
-            var lanterns = _context.Lanterns.ToList();
+            var lanterns = await _context.Lanterns.Include(f => f.Lamp).ToListAsync();
             if (!String.IsNullOrEmpty(name))
             {
                 lanterns = lanterns.Where(p => p.LanternName.Contains(name)).ToList();
             }
 
             var count = lanterns.Count();
-            IEnumerable<Lantern> items = lanterns.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            IEnumerable<Lantern> items =  lanterns.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
 
             IndexViewModel viewModel = new IndexViewModel
             {
                 PageViewModel = pageViewModel,
                 FilterViewModel = new FilterViewModel(name),
-                Lanterns = lanterns
+                Lanterns = items
             };
 
             return View(viewModel);
@@ -85,7 +85,7 @@ namespace MvcApplication.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampId", lantern.LampId);
+            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampName", lantern.LampId);
             return View(lantern);
         }
 
@@ -97,12 +97,12 @@ namespace MvcApplication.Controllers
                 return NotFound();
             }
 
-            var lantern = await _context.Lanterns.FindAsync(id);
+            var lantern = await _context.Lanterns.SingleOrDefaultAsync(m => m.LanternId == id);
             if (lantern == null)
             {
                 return NotFound();
             }
-            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampId", lantern.LampId);
+            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampName", lantern.LampId);
             return View(lantern);
         }
 
@@ -138,7 +138,7 @@ namespace MvcApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampId", lantern.LampId);
+            ViewData["LampId"] = new SelectList(_context.Lamps, "LampId", "LampName", lantern.LampId);
             return View(lantern);
         }
 
